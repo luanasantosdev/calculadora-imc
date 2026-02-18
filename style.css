@@ -1,14 +1,19 @@
 
-body{
+body {
     min-height: 100vh;
+    padding: 20px; 
+    box-sizing: border-box;
+    background-color: #f0f0f0; /* Só para dar um contraste */
 }
-main{
+main {
     border-radius: 20px;
-    margin: auto;
     background-color: white;
-    width: 500px;
+    /* EM VEZ DE 500px, USE ISSO: */
+    width: 95%;          /* Ocupa quase tudo no celular [cite: 2026-02-17] */
+    max-width: 500px;    /* No PC, trava em 500px [cite: 2026-02-17] */
+    margin: 20px auto;   /* O 'auto' centraliza o bloco na tela [cite: 2026-02-17] */
     box-shadow: 3px 1px 20px black;
-  
+    overflow: hidden;    /* Garante que nada saia das bordas arredondadas */
 }
 
 article{
@@ -22,21 +27,11 @@ p{
 th,td{
      border: 1px solid black;
 }
-table {
-    width: 450px;
-    height: 270px;
-    text-align: center;
-}
+
 input{
     height: 25px;
 }
-button{
-    display: block;
-    width: 450px;
-    height: 30px;
-    margin-top: 10px;
-    transition: 0.5s;
-}
+
 button:hover{
     background-color:rgba(128, 128, 128, 0.434);
     font-weight: bolder;
@@ -46,12 +41,30 @@ small{
     text-align: center;
     padding-bottom: 5px;
 }
-@media (max-max-width: 600px) {
-    body {
-        padding: 20px;
+/* O AJUSTE DA TABELA (Onde estava o erro de 450px) */
+table {
+    width: 100%;       /* Ocupa 100% do espaço do card 'main' [cite: 2026-02-17] */
+    height: auto;
+    text-align: center;
+    border-collapse: collapse; /* Deixa as bordas mais bonitas */
+}
+
+/* O AJUSTE DO BOTÃO (Também estava travado em 450px) */
+button {
+    display: block;
+    width: 100%;       /* Ocupa a largura total do espaço do article [cite: 2026-02-17] */
+    height: 40px;
+    margin: 10px auto; /* Centraliza o botão */
+    transition: 0.5s;
+}
+
+/* CORRIGINDO O ERRO DE DIGITAÇÃO DA MEDIA QUERY */
+@media (max-width: 600px) {
+    p {
+        font-size: 18px;
     }
-    input {
-        width: 100%; /* Ocupa a largura toda no celular */
-        font-size: 16px; /* Evita zoom automático no iOS */
+    /* Aqui você pode diminuir a letra da tabela se achar apertado */
+    td, th {
+        font-size: 14px;
     }
 }
